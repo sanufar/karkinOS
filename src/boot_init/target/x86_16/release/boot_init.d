@@ -1,0 +1,1 @@
+/Users/sanufar/projects/paneros/src/boot_init/target/x86_16/release/boot_init: /Users/sanufar/projects/paneros/src/boot_init/build.rs /Users/sanufar/projects/paneros/src/boot_init/src/boot.asm /Users/sanufar/projects/paneros/src/boot_init/src/disk.rs /Users/sanufar/projects/paneros/src/boot_init/src/main.rs
