@@ -1,5 +1,6 @@
 use core::mem::size_of;
 use core::arch::asm;
+use crate::print;
 
 const SECTOR_SIZE: u16 = 512;
 
@@ -67,5 +68,6 @@ impl DiskReader {
 
             remaining_sectors -= 1;
         }
+
     }
 }

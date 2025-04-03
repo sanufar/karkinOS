@@ -40,6 +40,7 @@ pub extern "C" fn main() -> ! {
     
 }
 
+
 fn print(message: &str) {
 
     let offset: u16 = message.as_ptr() as u16;
