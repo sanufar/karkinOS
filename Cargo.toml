@@ -1,6 +1,28 @@
-[package]
-name = "paneros"
+[workspace]
+members = ["boot_init", "bootloader", "kernel"]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
+authors = ["Farhan Sanukri"]
 edition = "2021"
 
-[dependencies]
+[profile.dev]
+panic = "abort"
+opt-level = 1
+
+[profile.release]
+panic = "abort"
+opt-level = 1
+
+[profile.release.package.boot_init]
+opt-level = "s"
+codegen-units = 1
+debug = false
+overflow-checks = false
+
+[profile.dev.package.boot_init]
+opt-level = "s"
+codegen-units = 1
+debug = false
+overflow-checks = false
