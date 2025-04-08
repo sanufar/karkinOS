@@ -1,5 +1,6 @@
 /target/
 **/target/
+**/notes/
 
 **/*.rs.bk
 
@@ -17,7 +18,9 @@
 /build/
 
 *.png
-*.md
+
+**/*.md
+!/*.md
 *.bin
 *.img
 *.txt
