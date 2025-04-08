@@ -37,7 +37,7 @@ endif
 # Build the boot sector (debug profile, custom 16‑bit target)
 # -----------------------------------------------------------------------------
 build:
-	@echo "Building Paneros…"
+	@echo "Building Karkinos…"
 	@$(CARGO) build --target=x86_16.json --package=boot_init
 
 # -----------------------------------------------------------------------------
@@ -61,11 +61,11 @@ image:
 # Run / debug in QEMU
 # -----------------------------------------------------------------------------
 run: all
-	@echo "Running Paneros…"
+	@echo "Running Karkinos…"
 	@$(QEMU) -drive file=build/disk.img,index=0,media=disk,format=raw,if=ide
 
 debug: all
-	@echo "Debugging Paneros (QEMU waiting for GDB on port 1234)…"
+	@echo "Debugging Karkinos (QEMU waiting for GDB on port 1234)…"
 	@$(QEMU) -S -s -drive file=build/disk.img,index=0,media=disk,format=raw,if=ide
 
 # -----------------------------------------------------------------------------

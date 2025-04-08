@@ -26,3 +26,4 @@ opt-level = "s"
 codegen-units = 1
 debug = false
 overflow-checks = false
+
