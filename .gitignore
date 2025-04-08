@@ -1,5 +1,11 @@
 /target/
 **/target/
+
+/build/
+**/build/
+
+*.lock
+
 **/notes/
 
 **/*.rs.bk
@@ -15,7 +21,6 @@
 /dist/
 /out/
 
-/build/
 
 *.png
 
