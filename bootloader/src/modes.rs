@@ -17,7 +17,7 @@ pub fn unreal_mode() {
             "mov eax, cr0",
             "and eax, 0xFFFFFFFE",
             "mov cr0, eax",
-            "jmp 0:1f",           
+            "jmp 0:1f",
             "1:",
             options(nostack)
         );
@@ -25,7 +25,7 @@ pub fn unreal_mode() {
         asm!(
             "mov ds, {0:x}",
             "mov ss, {1:x}",
-            "sti",                 
+            "sti",
             in(reg) ds,
             in(reg) ss
         );
