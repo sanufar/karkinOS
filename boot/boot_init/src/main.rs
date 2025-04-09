@@ -20,8 +20,8 @@ extern "C" {
 
 #[no_mangle]
 pub extern "C" fn main() -> ! {
-    clear();
 
+    print::raw_print("\r\n\0");
     print::raw_print("[*] Starting Stage 1 of boot...\r\n\0");
     print::raw_print("[*] Loading bootloader...\r\n\0");
 
@@ -38,12 +38,6 @@ pub extern "C" fn main() -> ! {
     jump(bootloader_start);
 
     loop {}
-}
-
-fn clear() {
-    unsafe {
-        asm!("mov ah, 0x00", "mov al, 0x03", "int 0x10");
-    }
 }
 
 fn jump(address: *const u16) {

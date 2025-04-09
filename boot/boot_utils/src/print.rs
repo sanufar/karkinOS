@@ -64,3 +64,9 @@ pub fn raw_print(message: &str) {
         )
     }
 }
+
+pub fn clear() {
+    unsafe {
+        asm!("mov ah, 0x00", "mov al, 0x03", "int 0x10");
+    }
+}

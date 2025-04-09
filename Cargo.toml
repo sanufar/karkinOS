@@ -1,5 +1,5 @@
 [workspace]
-members = ["boot_init", "boot_utils", "bootloader", "kernel"]
+members = ["boot/boot_init", "boot/boot_utils", "boot/bootloader", "kernel"]
 resolver = "2"
 
 [workspace.package]

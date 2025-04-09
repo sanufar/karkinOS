@@ -75,4 +75,37 @@ impl DiskReader {
         }
         true // All sectors read successfully
     }
+
+    pub fn read_and_copy_sectors(&mut self, sectors: u16, target: u32) -> bool {
+        let mut remaining_sectors: u16 = sectors;
+        let mut current_target = target;
+
+        while remaining_sectors > 0 {
+            if !self.read_sector() {
+                return false; // Error occurred
+            }
+
+            // Use the current offset from which the sector was read.
+            unsafe {
+                asm!(
+                    "cld",                          // Clear direction flag for forward copy.
+                    "mov ecx, {count:e}",           // Set counter to number of dwords (512/4)
+                    "mov esi, {src:e}",             // Source pointer.
+                    "mov edi, {dst:e}",             // Destination pointer.
+                    "rep movsd",                    // Copy ECX dwords.
+                    count = in(reg) SECTOR_SIZE / 4,
+                    src = in(reg) self.offset_target as u32,
+                    dst = in(reg) current_target,
+                    options(nostack, preserves_flags)
+                );
+            }
+
+            // Advance target pointer by sector size
+            current_target += SECTOR_SIZE as u32;
+            self.offset_target += SECTOR_SIZE;
+            self.lba += 1;
+            remaining_sectors -= 1;
+        }
+        true // All sectors read successfully
+    }
 }
