@@ -1,5 +1,5 @@
 [workspace]
-members = ["boot_init", "bootloader", "kernel"]
+members = ["boot_init", "boot_utils", "bootloader", "kernel"]
 resolver = "2"
 
 [workspace.package]
@@ -10,20 +10,24 @@ edition = "2021"
 [profile.dev]
 panic = "abort"
 opt-level = 1
+lto = true
 
 [profile.release]
 panic = "abort"
 opt-level = 1
 
 [profile.release.package.boot_init]
-opt-level = "s"
 codegen-units = 1
 debug = false
 overflow-checks = false
+opt-level = "z"  
+strip = true
+
+
 
 [profile.dev.package.boot_init]
-opt-level = "s"
 codegen-units = 1
 debug = false
 overflow-checks = false
-
+opt-level = "z"  
+strip = true
