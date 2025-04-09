@@ -5,5 +5,4 @@ mod gdt;
 mod modes;
 
 #[no_mangle]
-pub extern "C" fn main() -> ! {
-}
+pub extern "C" fn main() -> ! {}
