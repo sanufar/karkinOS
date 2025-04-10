@@ -8,6 +8,7 @@ use boot_utils::disk::DiskReader;
 use modes::protected_mode;
 use modes::unreal_mode;
 
+use core::arch::asm;
 use core::panic::PanicInfo;
 
 const KERNEL_LBA: u64 = 4096; 
@@ -27,6 +28,13 @@ fn panic(info: &PanicInfo) -> ! {
 #[no_mangle]
 #[link_section = ".start"]
 pub extern "C" fn _start() -> ! {
+
+    unsafe {
+        asm!("mov sp, 0x7C00");
+    }
+
+    unsafe { asm!("cli"); }
+
     boot_utils::println!("[*] Starting Stage 2 of bootloader...");
 
     boot_utils::println!("[*] Enabling the A20 line...");

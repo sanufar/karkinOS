@@ -259,7 +259,6 @@ pub fn unreal_mode() {
         asm!(
             "mov ds, {0:x}",
             "mov ss, {1:x}",
-            "sti",
             in(reg) ds,
             in(reg) ss
         );

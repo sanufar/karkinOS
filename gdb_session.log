@@ -1,0 +1,493 @@
+Reading symbols from target/x86_16/debug/bootloader...
+Undefined item: "i386_x86-64".
+Undefined item: "i386-x86_64".
+Undefined item: "i386-x86-64".
+Undefined command: "i386".  Try "help".
+The target architecture is set to "i386:x86-64".
+Remote debugging using localhost:1234
+0x000000000000fff0 in ?? ()
+Breakpoint 1 at 0x7e00: file boot/bootloader/src/main.rs, line 30.
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Function "enable_a20" not defined.
+Breakpoint 2 (enable_a20) pending.
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+Continuing.
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e02 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e04 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e06 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+bootloader::_start () at boot/bootloader/src/main.rs:33
+33	        asm!("mov sp, 0x7C00");
+36	    unsafe { asm!("cli"); }
+core::fmt::Arguments::new_v1<1, 0> (args=0x7db3, pieces=<optimized out>) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:643
+643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e17	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e21	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e2b	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e31 in core::fmt::Arguments::new_v1<1, 0> (args=0x7c30, pieces=<optimized out>) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:643
+643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e37	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e41	643	        Arguments { pieces, fmt: None, args }
+bootloader::_start () at boot/bootloader/src/main.rs:38
+38	    boot_utils::println!("[*] Starting Stage 2 of bootloader...");
+0x0000000000007e46 in bootloader::_start () at boot/bootloader/src/main.rs:38
+38	    boot_utils::println!("[*] Starting Stage 2 of bootloader...");
+boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:34
+34	pub fn _print(args: fmt::Arguments) {
+boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:37
+37	        PRINTER.write_fmt(args).unwrap();
+0x0000000000008288 in boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:37
+37	        PRINTER.write_fmt(args).unwrap();
+0x000000000000828e in boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:37
+37	        PRINTER.write_fmt(args).unwrap();
+core::fmt::Write::write_fmt<boot_utils::print::Printer> (self=<optimized out>, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:205
+205	    fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+0x0000000000008184 in core::fmt::Write::write_fmt<boot_utils::print::Printer> (self=0xc6890000, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:205
+205	    fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+0x000000000000818a	205	    fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+core::fmt::Arguments::as_str (self=0x80) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:736
+736	            ([], []) => Some(""),
+core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+0x000000000000819b	229	                    write(self, args)
+0x00000000000081a1	229	                    write(self, args)
+0x00000000000081a6	229	                    write(self, args)
+0x00000000000081ac	229	                    write(self, args)
+0x00000000000081b1	229	                    write(self, args)
+0x00000000000081b7	229	                    write(self, args)
+0x00000000000081bc	229	                    write(self, args)
+0x00000000000081c2	229	                    write(self, args)
+0x00000000000081c6	229	                    write(self, args)
+0x00000000000081cb	229	                    write(self, args)
+0x00000000000081d1	229	                    write(self, args)
+0x00000000000081d6	229	                    write(self, args)
+0x00000000000081d9	229	                    write(self, args)
+0x00000000000081db in core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+0x00000000000081e1 in core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+0x00000000000081e3 in core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f2 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f4 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f6 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f8 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087fc in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x0000000000008802	1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x0000000000008808	1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+core::fmt::Formatter::new (write=..., options=...) at src/fmt/mod.rs:578
+578	        Formatter { options, buf: write }
+0x0000000000008818	578	        Formatter { options, buf: write }
+0x0000000000008822	578	        Formatter { options, buf: write }
+0x0000000000008828	578	        Formatter { options, buf: write }
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1467
+1467	    match args.fmt {
+0x0000000000008833	1467	    match args.fmt {
+0x0000000000008836	1467	    match args.fmt {
+1470	            for (i, arg) in args.args.iter().enumerate() {
+core::num::{impl#11}::checked_mul (self=0, rhs=8) at src/num/uint_macros.rs:916
+916	            let (a, b) = self.overflowing_mul(rhs);
+core::ptr::mut_ptr::{impl#0}::add::runtime_add_nowrap::runtime (this=<optimized out>, count=0, size=8) at src/ptr/mut_ptr.rs:1033
+1033	                    let Some(byte_offset) = count.checked_mul(size) else {
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1470
+1470	            for (i, arg) in args.args.iter().enumerate() {
+core::num::{impl#11}::checked_mul (self=0, rhs=8) at src/num/uint_macros.rs:917
+917	            if intrinsics::unlikely(b) { None } else { Some(a) }
+core::ptr::mut_ptr::{impl#0}::add::runtime_add_nowrap::runtime (this=0x0, count=0, size=8) at src/ptr/mut_ptr.rs:1037
+1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a5a	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a5d	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a60	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a63	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a65	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+core::ptr::mut_ptr::{impl#0}::add<core::fmt::rt::Argument> (self=0x0, count=0) at src/ptr/mut_ptr.rs:1054
+1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a7e	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a84	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a88	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a8d	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a92	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a98	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a9b	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a9e	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aa1 in core::ptr::non_null::{impl#14}::eq<core::fmt::rt::Argument> (self=<optimized out>, other=<optimized out>) at src/ptr/mut_ptr.rs:1054
+1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aa5	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aa9	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aad	1054	        unsafe { intrinsics::offset(self, count) }
+core::ptr::non_null::{impl#14}::eq<core::fmt::rt::Argument> (self=<optimized out>, other=<optimized out>) at src/ptr/non_null.rs:1620
+1620	        self.as_ptr() == other.as_ptr()
+0x0000000000008ab3	1620	        self.as_ptr() == other.as_ptr()
+0x0000000000008ab9	1620	        self.as_ptr() == other.as_ptr()
+0x0000000000008abc	1620	        self.as_ptr() == other.as_ptr()
+core::slice::iter::{impl#182}::next<core::fmt::rt::Argument> (self=<optimized out>) at src/slice/iter/macros.rs:179
+179	                        if ptr == crate::intrinsics::transmute::<$ptr, NonNull<T>>(end_or_len) {
+core::iter::adapters::enumerate::{impl#1}::next<core::slice::iter::Iter<core::fmt::rt::Argument>> (self=<optimized out>) at src/iter/adapters/enumerate.rs:47
+47	        let a = self.iter.next()?;
+0x0000000000008aca	47	        let a = self.iter.next()?;
+0x0000000000008ae0 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1470
+1470	            for (i, arg) in args.args.iter().enumerate() {
+0x0000000000008ae3	1470	            for (i, arg) in args.args.iter().enumerate() {
+1470	            for (i, arg) in args.args.iter().enumerate() {
+0x0000000000008ae9	1470	            for (i, arg) in args.args.iter().enumerate() {
+core::slice::index::{impl#2}::get<&str> (self=31628, slice=...) at src/slice/index.rs:228
+228	        if self < slice.len() { unsafe { Some(&*get_noubcheck(slice, self)) } } else { None }
+0x0000000000008b7c	228	        if self < slice.len() { unsafe { Some(&*get_noubcheck(slice, self)) } } else { None }
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1505
+1505	    if let Some(piece) = args.pieces.get(idx) {
+0x0000000000008b83	1505	    if let Some(piece) = args.pieces.get(idx) {
+1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b8d	1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b93 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1506
+1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b98 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1506
+1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b9e in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1506
+1506	        formatter.buf.write_str(*piece)?;
+boot_utils::print::{impl#0}::write_str (self=0xf000ff53, s=...) at boot/boot_utils/src/print.rs:11
+11	    fn write_str(&mut self, s: &str) -> fmt::Result {
+boot_utils::print::raw_print (message=...) at boot/boot_utils/src/print.rs:45
+45	        asm!(
+0x0000000000008269 in boot_utils::print::raw_print (message=...) at boot/boot_utils/src/print.rs:45
+45	        asm!(
+0x000000000000826a in boot_utils::print::raw_print (message=...) at boot/boot_utils/src/print.rs:45
+45	        asm!(
+0x000000000000826c	45	        asm!(
+0x000000000000826e	45	        asm!(
+0x0000000000008270	45	        asm!(
+0x0000000000008272	45	        asm!(
+0x0000000000005606 in ?? ()
+0x0000000000005607 in ?? ()
+0x0000000000005608 in ?? ()
+0x0000000000005609 in ?? ()
+0x000000000000560b in ?? ()
+0x000000000000560e in ?? ()
+0x0000000000005610 in ?? ()
+0x0000000000005615 in ?? ()
+0x0000000000005619 in ?? ()
+0x000000000000561e in ?? ()
+0x0000000000005624 in ?? ()
+0x0000000000005629 in ?? ()
+0x000000000000562c in ?? ()
+0x0000000000005631 in ?? ()
+0x0000000000005636 in ?? ()
+0x000000000000563b in ?? ()
+0x0000000000005640 in ?? ()
+0x0000000000005645 in ?? ()
+0x000000000000564a in ?? ()
+0x000000000000564e in ?? ()
+0x0000000000005653 in ?? ()
+0x0000000000005657 in ?? ()
+0x000000000000565c in ?? ()
+0x0000000000005660 in ?? ()
+0x0000000000005662 in ?? ()
+0x0000000000005664 in ?? ()
+0x0000000000005667 in ?? ()
+0x0000000000005668 in ?? ()
+0x0000000000004869 in ?? ()
+0x000000000000486b in ?? ()
+0x000000000000486e in ?? ()
+0x0000000000004870 in ?? ()
+0x0000000000004872 in ?? ()
+0x0000000000004874 in ?? ()
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e02 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e04 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e06 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+bootloader::_start () at boot/bootloader/src/main.rs:33
+33	        asm!("mov sp, 0x7C00");
+36	    unsafe { asm!("cli"); }
+core::fmt::Arguments::new_v1<1, 0> (args=0x7db3, pieces=<optimized out>) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:643
+643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e17	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e21	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e2b	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e31 in core::fmt::Arguments::new_v1<1, 0> (args=0x7c30, pieces=<optimized out>) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:643
+643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e37	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e41	643	        Arguments { pieces, fmt: None, args }
+bootloader::_start () at boot/bootloader/src/main.rs:38
+38	    boot_utils::println!("[*] Starting Stage 2 of bootloader...");
+0x0000000000007e46 in bootloader::_start () at boot/bootloader/src/main.rs:38
+38	    boot_utils::println!("[*] Starting Stage 2 of bootloader...");
+boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:34
+34	pub fn _print(args: fmt::Arguments) {
+boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:37
+37	        PRINTER.write_fmt(args).unwrap();
+0x0000000000008288 in boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:37
+37	        PRINTER.write_fmt(args).unwrap();
+0x000000000000828e in boot_utils::print::_print (args=...) at boot/boot_utils/src/print.rs:37
+37	        PRINTER.write_fmt(args).unwrap();
+core::fmt::Write::write_fmt<boot_utils::print::Printer> (self=<optimized out>, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:205
+205	    fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+0x0000000000008184 in core::fmt::Write::write_fmt<boot_utils::print::Printer> (self=0xc6890000, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:205
+205	    fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+0x000000000000818a	205	    fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+core::fmt::Arguments::as_str (self=0x80) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:736
+736	            ([], []) => Some(""),
+core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+0x000000000000819b	229	                    write(self, args)
+0x00000000000081a1	229	                    write(self, args)
+0x00000000000081a6	229	                    write(self, args)
+0x00000000000081ac	229	                    write(self, args)
+0x00000000000081b1	229	                    write(self, args)
+0x00000000000081b7	229	                    write(self, args)
+0x00000000000081bc	229	                    write(self, args)
+0x00000000000081c2	229	                    write(self, args)
+0x00000000000081c6	229	                    write(self, args)
+0x00000000000081cb	229	                    write(self, args)
+0x00000000000081d1	229	                    write(self, args)
+0x00000000000081d6	229	                    write(self, args)
+0x00000000000081d9	229	                    write(self, args)
+0x00000000000081db in core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+0x00000000000081e1 in core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+0x00000000000081e3 in core::fmt::Write::write_fmt::{impl#1}::spec_write_fmt<boot_utils::print::Printer> (self=warning: (Internal error: pc 0xa30b in read in CU, but not in symtab.)
+warning: (Error: pc 0xa30b in address map, but not in symtab.)
+0xa30b, args=...) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:229
+229	                    write(self, args)
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f2 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f4 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f6 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087f8 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x00000000000087fc in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1463
+1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x0000000000008802	1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+0x0000000000008808	1463	pub fn write(output: &mut dyn Write, args: Arguments<'_>) -> Result {
+core::fmt::Formatter::new (write=..., options=...) at src/fmt/mod.rs:578
+578	        Formatter { options, buf: write }
+0x0000000000008818	578	        Formatter { options, buf: write }
+0x0000000000008822	578	        Formatter { options, buf: write }
+0x0000000000008828	578	        Formatter { options, buf: write }
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1467
+1467	    match args.fmt {
+0x0000000000008833	1467	    match args.fmt {
+0x0000000000008836	1467	    match args.fmt {
+1470	            for (i, arg) in args.args.iter().enumerate() {
+core::num::{impl#11}::checked_mul (self=0, rhs=8) at src/num/uint_macros.rs:916
+916	            let (a, b) = self.overflowing_mul(rhs);
+core::ptr::mut_ptr::{impl#0}::add::runtime_add_nowrap::runtime (this=<optimized out>, count=0, size=8) at src/ptr/mut_ptr.rs:1033
+1033	                    let Some(byte_offset) = count.checked_mul(size) else {
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1470
+1470	            for (i, arg) in args.args.iter().enumerate() {
+core::num::{impl#11}::checked_mul (self=0, rhs=8) at src/num/uint_macros.rs:917
+917	            if intrinsics::unlikely(b) { None } else { Some(a) }
+core::ptr::mut_ptr::{impl#0}::add::runtime_add_nowrap::runtime (this=0x0, count=0, size=8) at src/ptr/mut_ptr.rs:1037
+1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a5a	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a5d	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a60	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a63	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+0x0000000000008a65	1037	                    byte_offset <= (isize::MAX as usize) && !overflow
+core::ptr::mut_ptr::{impl#0}::add<core::fmt::rt::Argument> (self=0x0, count=0) at src/ptr/mut_ptr.rs:1054
+1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a7e	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a84	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a88	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a8d	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a92	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a98	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a9b	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008a9e	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aa1 in core::ptr::non_null::{impl#14}::eq<core::fmt::rt::Argument> (self=<optimized out>, other=<optimized out>) at src/ptr/mut_ptr.rs:1054
+1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aa5	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aa9	1054	        unsafe { intrinsics::offset(self, count) }
+0x0000000000008aad	1054	        unsafe { intrinsics::offset(self, count) }
+core::ptr::non_null::{impl#14}::eq<core::fmt::rt::Argument> (self=<optimized out>, other=<optimized out>) at src/ptr/non_null.rs:1620
+1620	        self.as_ptr() == other.as_ptr()
+0x0000000000008ab3	1620	        self.as_ptr() == other.as_ptr()
+0x0000000000008ab9	1620	        self.as_ptr() == other.as_ptr()
+0x0000000000008abc	1620	        self.as_ptr() == other.as_ptr()
+core::slice::iter::{impl#182}::next<core::fmt::rt::Argument> (self=<optimized out>) at src/slice/iter/macros.rs:179
+179	                        if ptr == crate::intrinsics::transmute::<$ptr, NonNull<T>>(end_or_len) {
+core::iter::adapters::enumerate::{impl#1}::next<core::slice::iter::Iter<core::fmt::rt::Argument>> (self=<optimized out>) at src/iter/adapters/enumerate.rs:47
+47	        let a = self.iter.next()?;
+0x0000000000008aca	47	        let a = self.iter.next()?;
+0x0000000000008ae0 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1470
+1470	            for (i, arg) in args.args.iter().enumerate() {
+0x0000000000008ae3	1470	            for (i, arg) in args.args.iter().enumerate() {
+1470	            for (i, arg) in args.args.iter().enumerate() {
+0x0000000000008ae9	1470	            for (i, arg) in args.args.iter().enumerate() {
+core::slice::index::{impl#2}::get<&str> (self=31628, slice=...) at src/slice/index.rs:228
+228	        if self < slice.len() { unsafe { Some(&*get_noubcheck(slice, self)) } } else { None }
+0x0000000000008b7c	228	        if self < slice.len() { unsafe { Some(&*get_noubcheck(slice, self)) } } else { None }
+core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1505
+1505	    if let Some(piece) = args.pieces.get(idx) {
+0x0000000000008b83	1505	    if let Some(piece) = args.pieces.get(idx) {
+1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b8d	1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b93 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1506
+1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b98 in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1506
+1506	        formatter.buf.write_str(*piece)?;
+0x0000000000008b9e in core::fmt::write (output=..., args=...) at src/fmt/mod.rs:1506
+1506	        formatter.buf.write_str(*piece)?;
+boot_utils::print::{impl#0}::write_str (self=0xf000ff53, s=...) at boot/boot_utils/src/print.rs:11
+11	    fn write_str(&mut self, s: &str) -> fmt::Result {
+boot_utils::print::raw_print (message=...) at boot/boot_utils/src/print.rs:45
+45	        asm!(
+0x0000000000008269 in boot_utils::print::raw_print (message=...) at boot/boot_utils/src/print.rs:45
+45	        asm!(
+0x000000000000826a in boot_utils::print::raw_print (message=...) at boot/boot_utils/src/print.rs:45
+45	        asm!(
+0x000000000000826c	45	        asm!(
+0x000000000000826e	45	        asm!(
+0x0000000000008270	45	        asm!(
+0x0000000000008272	45	        asm!(
+0x0000000000005606 in ?? ()
+0x0000000000005607 in ?? ()
+0x0000000000005608 in ?? ()
+0x0000000000005609 in ?? ()
+0x000000000000560b in ?? ()
+0x000000000000560e in ?? ()
+0x0000000000005610 in ?? ()
+0x0000000000005615 in ?? ()
+0x0000000000005619 in ?? ()
+0x000000000000561e in ?? ()
+0x0000000000005624 in ?? ()
+0x0000000000005629 in ?? ()
+0x000000000000562c in ?? ()
+0x0000000000005631 in ?? ()
+0x0000000000005636 in ?? ()
+0x000000000000563b in ?? ()
+0x0000000000005640 in ?? ()
+0x0000000000005645 in ?? ()
+0x000000000000564a in ?? ()
+0x000000000000564e in ?? ()
+0x0000000000005653 in ?? ()
+0x0000000000005657 in ?? ()
+0x000000000000565c in ?? ()
+0x0000000000005660 in ?? ()
+0x0000000000005662 in ?? ()
+0x0000000000005664 in ?? ()
+0x0000000000005667 in ?? ()
+0x0000000000005668 in ?? ()
+0x0000000000004869 in ?? ()
+0x000000000000486b in ?? ()
+0x000000000000486e in ?? ()
+0x0000000000004870 in ?? ()
+0x0000000000004872 in ?? ()
+0x0000000000004874 in ?? ()
+
+Breakpoint 1, bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e02 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e04 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+0x0000000000007e06 in bootloader::_start () at boot/bootloader/src/main.rs:30
+30	pub extern "C" fn _start() -> ! {
+bootloader::_start () at boot/bootloader/src/main.rs:33
+33	        asm!("mov sp, 0x7C00");
+36	    unsafe { asm!("cli"); }
+core::fmt::Arguments::new_v1<1, 0> (args=0x7db3, pieces=<optimized out>) at /Users/sanufar/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/core/src/fmt/mod.rs:643
+643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e17	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e21	643	        Arguments { pieces, fmt: None, args }
+0x0000000000007e2b	643	        Arguments { pieces, fmt: None, args }
+quit
+Detaching from program: /Users/sanufar/projects/karkinos/target/x86_16/debug/bootloader, process 1
+Ending remote debugging.
+[Inferior 1 (process 1) detached]
