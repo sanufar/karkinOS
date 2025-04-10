@@ -1,7 +1,0 @@
-[package]
-name = "boot_init"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-boot_utils = { path = "../boot_utils" }

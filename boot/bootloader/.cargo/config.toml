@@ -1,2 +1,0 @@
-target = "i386-unknown-none-code16"             # build for the target triple (ignored by `cargo install`)
-

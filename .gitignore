@@ -29,3 +29,8 @@
 *.bin
 *.img
 *.txt
+
+
+# Added by cargo
+
+/target

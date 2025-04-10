@@ -1,33 +1,16 @@
-[workspace]
-members = ["boot/boot_init", "boot/boot_utils", "boot/bootloader", "kernel"]
-resolver = "2"
-
-[workspace.package]
+[package]
+name = "karkinos"
 version = "0.1.0"
-authors = ["Farhan Sanukri"]
-edition = "2021"
+edition = "2024"
+default-run = "karkinos"
 
-[profile.dev]
-panic = "abort"
-opt-level = 1
-lto = true
+[workspace]
+members = ["kernel"]
 
-[profile.release]
-panic = "abort"
-opt-level = 1
+[dependencies]
+ovmf-prebuilt = "0.1.0-alpha"
 
-[profile.release.package.boot_init]
-codegen-units = 1
-debug = false
-overflow-checks = false
-opt-level = "z"  
-strip = true
+[build-dependencies]
+kernel = { path = "kernel", artifact = "bin", target = "x86_64-unknown-none" }
+bootloader = "0.11.3"
 
-
-
-[profile.dev.package.boot_init]
-codegen-units = 1
-debug = false
-overflow-checks = false
-opt-level = "z"  
-strip = true
