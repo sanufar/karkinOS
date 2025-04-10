@@ -35,6 +35,8 @@ pub extern "C" fn main() -> ! {
         loop {} // Halt on error
     }
 
+    print::raw_print("[*] Successfully loaded bootloader.\r\n\0");
+
     jump(bootloader_start);
 
     loop {}

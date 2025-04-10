@@ -45,71 +45,89 @@ pub fn enable_a20() -> Result<(), &'static str> {
 /// Enacts step 1 of approach.
 /// Need to ret
 fn a20_check_odd_mb() -> bool {
-    let mut buffer_below_mb: u8 = 0;
-    let mut buffer_above_mb: u8 = 0;
+    let mut buffer_below_mb: u16 = 0;
+    let mut buffer_above_mb: u16 = 0;
 
     // if a20 is enabled, result == 1, else == 0
-    let mut result: u8 = 0;
+    let mut result: u16 = 0;
 
     unsafe {
-        asm!(
-            "pushf",   // Save flags register
-            "push si", // Save source index register
-            "push di", // Save destination index register
-            "push ds", // Save data segment register
-            "push es", // Save extra segment register
-            "cli",     // Disable interrupts
-            options(preserves_flags),
-        );
+    // Save registers and disable interrupts as before
+    asm!(
+        "pushf",
+        "push si",
+        "push di",
+        "push ds",
+        "push es",
+        "cli",
+        options(preserves_flags),
+    );
 
-        asm!("mov ax, 0x0000", "mov ds, ax", "mov si, 0x0500",);
+    // Set up segment registers and indexes
+    asm!(
+        "mov ax, 0x0000",
+        "mov ds, ax",
+        "mov si, 0x0500",
+        options(nostack, nomem)
+    );
 
-        asm!("not ax", "mov es, ax", "mov di, 0x0510",);
+    asm!(
+        "not ax",
+        "mov es, ax",
+        "mov di, 0x0510",
+        options(nostack, nomem)
+    );
 
-        asm!(
-            "mov al, [ds:si]",
-            "mov byte [{buf_below}], al",
-            "mov al, [es:di]",
-            "mov byte [{buf_above}], al",
-            buf_below = in(reg) &mut buffer_below_mb,
-            buf_above = in(reg) &mut buffer_above_mb,
-        );
+    // Save original buffer contents:
+    asm!(
+        "mov al, byte ptr ds:[si]",
+        "mov byte ptr [{buf_below}], al",  // write to our saved variable
+        "mov al, byte ptr es:[di]",
+        "mov byte ptr [{buf_above}], al",
+        buf_below = in(reg) &mut buffer_below_mb,
+        buf_above = in(reg) &mut buffer_above_mb,
+    );
 
-        asm!(
-            "mov ah, 1",
-            "mov byte [ds:si], 0",
-            "mov byte [es:di], 1",
-            "mov al, [ds:si]",
-            "cmp al, [es:di]",
-            "setne al", // If vals different, AL = 1, if equal, AL = 0
-            "mov byte [{result}], al",
-            result = in(reg) &mut result,
-        );
+    // Perform the test
+    asm!(
+        "mov ah, 1",
+        "mov byte ptr ds:[si], 0",
+        "mov byte ptr es:[di], 1",
+        "mov al, byte ptr ds:[si]",
+        "cmp al, byte ptr es:[di]",
+        "setne al", // AL = 1 if values differ, else 0
+        "mov byte ptr [{result}], al",
+        result = in(reg) &mut result,
+    );
 
-        asm!(
-            "mov al, byte [{buf_below}]",
-            "mov byte [ds:si], al",      
-            "mov al, byte [{buf_above}]",
-            "mov byte [es:di], al",     
-            buf_below = in(reg) buffer_below_mb,
-            buf_above = in(reg) buffer_above_mb,
-        );
+    // Restore original memory contents:
+    asm!(
+        "mov al, byte ptr [{buf_below}]",
+        "mov byte ptr ds:[si], al",      
+        "mov al, byte ptr [{buf_above}]",
+        "mov byte ptr es:[di], al",
+        buf_below = in(reg) buffer_below_mb,
+        buf_above = in(reg) buffer_above_mb,
+    );
 
-        asm!(
-            "pop si",
-            "pop di",
-            "pop es",
-            "pop ds",
-            "popf",
-        );
-    }
+    // Restore registers and flags:
+    asm!(
+        "pop si",
+        "pop di",
+        "pop es",
+        "pop ds",
+        "popf",
+        options(nostack, preserves_flags),
+    );
+}
+
 
     result == 1
 }
 
 /// Enacts step 2 -> tries to enable A20 line with BIOS functions
 fn enable_a20_bios() -> Result<(), &'static str> {
-    let mut a20_err: u8 = 0; // 0 if no error; 1 means either not supported or activation failed
+    let mut a20_err: u16 = 0; // 0 if no error; 1 means either not supported or activation failed
     unsafe {
         asm!(
             // Query A20 support
@@ -138,7 +156,7 @@ fn enable_a20_bios() -> Result<(), &'static str> {
             "2:",                   // Label 2: A20 successfully activated or already active
             "jmp 4f",               // Jump past error code
             "3:",                   // Label 3: Error handling path
-            "mov byte ptr [{err_ptr:w}], 1", // Set error flag to 1
+            "mov byte ptr [{err_ptr}], 1", // Set error flag to 1
             "4:",                   // Label 4: End of ASM block
 
             err_ptr = inout(reg) a20_err,
@@ -233,8 +251,8 @@ pub fn unreal_mode() {
             "mov eax, cr0",
             "and eax, 0xFFFFFFFE",
             "mov cr0, eax",
-            "jmp 0:1f",
-            "1:",
+            "jmp 2f",
+            "2:",
             options(nostack)
         );
 
@@ -257,19 +275,20 @@ pub fn protected_mode() {
     unsafe {
         asm!("mov eax, cr0", "or eax, 1", "mov cr0, eax");
 
-        asm!("ljmp ${0:w}, $1f", "1:", in(reg) GDT.code_segment_selector());
+        asm!("ljmp $0x8, $2f", "2:", options(att_syntax));
 
         asm!(
-                ".code32",
+            ".code32",
 
-                "mov ax, {0:w}",
-                "mov ds, ax",
-                "mov ss, ax",
-                "mov es, ax",
-                "mov fs, ax",
-                "mov gs, ax",
-                in(reg) GDT.data_segment_selector()
+            "mov ds, {0:e}",
+            "mov es, {0:e}",
+            "mov ss, {0:e}",
+            "mov fs, {0:e}",
+            "mov gs, {0:e}",
+
+            in(reg) GDT.data_segment_selector()
         );
+;
     }
 }
 pub fn long_mode() {}
