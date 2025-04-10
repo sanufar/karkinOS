@@ -8,6 +8,7 @@ default-run = "karkinos"
 members = ["kernel"]
 
 [dependencies]
+log = "0.4.27"
 ovmf-prebuilt = "0.1.0-alpha"
 
 [build-dependencies]
