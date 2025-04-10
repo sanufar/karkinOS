@@ -1,4 +1,4 @@
-use core::arch::asm;
+use core::{arch::asm, option};
 
 use crate::gdt::GDT;
 use boot_utils::println;
@@ -237,33 +237,6 @@ fn enable_a20_fast() {
     }
 }
 
-pub fn unreal_mode() {
-    let ds: u16;
-    let ss: u16;
-    unsafe {
-        asm!("mov {0:x}, ds", "mov {1:x}, ss", out(reg) ds, out(reg) ss);
-    }
-
-    protected_mode();
-
-    unsafe {
-        asm!(
-            "mov eax, cr0",
-            "and eax, 0xFFFFFFFE",
-            "mov cr0, eax",
-            "jmp 2f",
-            "2:",
-            options(nostack)
-        );
-
-        asm!(
-            "mov ds, {0:x}",
-            "mov ss, {1:x}",
-            in(reg) ds,
-            in(reg) ss
-        );
-    }
-}
 pub fn protected_mode() {
     unsafe {
         asm!("cli");
@@ -272,22 +245,57 @@ pub fn protected_mode() {
     GDT.load();
 
     unsafe {
-        asm!("mov eax, cr0", "or eax, 1", "mov cr0, eax");
+        asm!(
+            "mov eax, cr0",
+            "or eax, 1",
+            "mov cr0, eax",
+        );
+        asm!(
 
-        asm!("ljmp $0x8, $2f", "2:", options(att_syntax));
+            "ljmp $0x8, $2f",
+            "2:",
+            options(att_syntax)
+        );
 
         asm!(
             ".code32",
-
-            "mov ds, {0:e}",
-            "mov es, {0:e}",
-            "mov ss, {0:e}",
-            "mov fs, {0:e}",
-            "mov gs, {0:e}",
-
-            in(reg) GDT.data_segment_selector()
+            "mov ax, 0x10",
+            "mov ds, ax",
+            "mov es, ax",
+            "mov ss, ax",
+            "mov fs, ax",
+            "mov gs, ax",
         );
-;
+    }
+}
+
+pub fn unreal_mode() {
+    // Save the original real mode CS. This is the selector you want CS to have once you return.
+    let orig_cs: u16;
+    unsafe {
+        asm!("mov {0:x}, cs", out(reg) orig_cs, options(nostack));
+    }
+
+    // Enter protected mode so that we can load flat segment descriptors.
+    protected_mode();
+
+    unsafe {
+        // 1. Disable protected mode by clearing the PE bit in CR0,
+        //    but do not reload DS/ES so that they remain flat.
+        asm!(
+            "mov eax, cr0",
+            "and eax, 0xFFFFFFFE", // Clear bit 0.
+            "mov cr0, eax",
+            options(nostack)
+        );
+
+        // 2. Perform a far jump to restore the original (real mode) CS.
+        //    This far jump (ljmp) is essential to update CS when leaving protected mode.
+        asm!(
+            "ljmp $0x8, $2f",
+            "2:",
+            options(att_syntax)
+        );
     }
 }
 pub fn long_mode() {}
