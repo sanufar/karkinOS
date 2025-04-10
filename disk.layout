@@ -1,0 +1,9 @@
+label: dos
+label-id: 0xNEWID1234
+device: disk.img
+unit: sectors
+sector-size: 512
+
+disk.img1 : start=        2048, size=        2048, type=0
+disk.img2 : start=        4096, size=       65536, type=0
+disk.img3 : start=       69632, size=       94208, type=6
