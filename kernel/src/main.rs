@@ -1,12 +1,25 @@
 #![no_std]
 #![no_main]
 
+mod framebuffer;
+
 use core::panic::PanicInfo;
 use bootloader_api::BootInfo;
 use bootloader_api::info::FrameBufferInfo;
 
 use conquer_once::spin::OnceCell;
 use bootloader_x86_64_common::logger::LockedLogger;
+use framebuffer::FramebufferDisplay;
+
+use embedded_graphics::geometry::Dimensions;
+use embedded_graphics::prelude::*;
+use embedded_graphics::primitives::{
+        Circle, PrimitiveStyle, PrimitiveStyleBuilder, Rectangle, StrokeAlignment, Triangle,
+    };
+use embedded_graphics::text::{Alignment, Text};
+use embedded_graphics::mono_font::{ascii::FONT_6X10, MonoTextStyle};
+use embedded_graphics::pixelcolor::Rgb888;
+
 
 pub(crate) static LOGGER: OnceCell<LockedLogger> = OnceCell::uninit();
 
@@ -26,7 +39,20 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
     let frame_buffer_struct = frame_buffer_option.unwrap();
     let frame_buffer_info = frame_buffer_struct.info().clone();
     let raw_frame_buffer = frame_buffer_struct.buffer_mut();
-    init_logger(raw_frame_buffer, frame_buffer_info);
+    //init_logger(raw_frame_buffer, frame_buffer_info);
+
+    let mut display = FramebufferDisplay::new(frame_buffer_struct);
+
+    let character_style = MonoTextStyle::new(&FONT_6X10, Rgb888::new(255,255,255));
+
+    let text = "embedded-graphics";
+    Text::with_alignment(
+        text,
+        display.bounding_box().center() + Point::new(0, 15),
+        character_style,
+        Alignment::Center,
+    )
+    .draw(&mut display).unwrap();
 
     loop {}
 }
