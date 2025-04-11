@@ -36,22 +36,22 @@ pub fn set_pixel(framebuffer: &mut FrameBuffer, position: Position, color: Color
             pixel_buffer[0] = color.red;
             pixel_buffer[1] = color.blue;
             pixel_buffer[2] = color.green;
-        },
+        }
         PixelFormat::Bgr => {
             pixel_buffer[0] = color.blue;
             pixel_buffer[1] = color.green;
             pixel_buffer[2] = color.red;
-        },
+        }
         PixelFormat::U8 => {
-            let gray = (color.red + color.green + color.blue)/3;
+            let gray = (color.red + color.green + color.blue) / 3;
             pixel_buffer[0] = gray;
-        },
+        }
         other => panic!("Unknown pixel format: {other:?}"),
     }
 }
 
 pub(crate) struct FramebufferDisplay<'f> {
-    framebuffer: &'f mut FrameBuffer
+    framebuffer: &'f mut FrameBuffer,
 }
 
 impl<'f> FramebufferDisplay<'f> {
@@ -71,11 +71,14 @@ impl<'f> FramebufferDisplay<'f> {
         };
 
         if (0..width).contains(&x) && (0..height).contains(&y) {
-            let color = Color { red: color.r(), green: color.g(), blue: color.b() };
+            let color = Color {
+                red: color.r(),
+                green: color.g(),
+                blue: color.b(),
+            };
 
             set_pixel(self.framebuffer, Position { x, y }, color);
         }
-
     }
 }
 
@@ -86,7 +89,8 @@ impl<'f> DrawTarget for FramebufferDisplay<'f> {
 
     fn draw_iter<I>(&mut self, pixels: I) -> Result<(), Self::Error>
     where
-        I: IntoIterator<Item = Pixel<Self::Color>> {
+        I: IntoIterator<Item = Pixel<Self::Color>>,
+    {
         for pixel in pixels.into_iter() {
             self.draw_pixel(pixel);
         }
@@ -102,4 +106,3 @@ impl<'f> OriginDimensions for FramebufferDisplay<'f> {
         Size::new(info.width as u32, info.height as u32)
     }
 }
-

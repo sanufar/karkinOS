@@ -10,4 +10,3 @@ fn main() {
     let exit_status = qemu.status().unwrap();
     process::exit(exit_status.code().unwrap_or(-1));
 }
-
