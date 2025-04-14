@@ -34,3 +34,4 @@
 # Added by cargo
 
 /target
+/tests/
