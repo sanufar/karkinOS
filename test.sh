@@ -9,11 +9,11 @@ if [ -f "$TEST_IMG" ]; then
     rm "$TEST_IMG"
 fi
 
-echo "Cleaning tests directory..."
-cargo clean --target-dir tests
+# echo "Cleaning tests directory..."
+# cargo clean --target-dir tests
 
 echo "Building kernel tests..."
-cargo build -p kernel --features kerntest --target x86_64-unknown-none --target-dir tests
+RUSTFLAGS="-C debuginfo=0" cargo build -p kernel --features kerntest -j 8 --target x86_64-unknown-none --target-dir tests
 
 echo "Locating test binary..."
 TEST_BIN=$(rg --files tests/x86_64-unknown-none/debug/deps/ | rg -v '\.' | head -n 1)

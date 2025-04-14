@@ -1,2 +1,7 @@
 [unstable]
 bindeps = true
+
+[build]
+incremental = true
+rustc-wrapper = "/opt/homebrew/bin/sccache"
+

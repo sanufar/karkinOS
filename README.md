@@ -17,3 +17,7 @@
 > καρκῐ́νος • (karkĭ́nos): Meaning 'crab'
 
 Documentation + notes incoming. 
+
+Note - to improve test build speeds, sccache is used.
+
+Current path is hardcoded to homebrew installation. Build script needs to fix this.

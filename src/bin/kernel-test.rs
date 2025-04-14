@@ -20,7 +20,6 @@ fn main() {
 
     println!("Created test image: {}", uefi_image_path.display());
 
-
     let mut qemu = Command::new("qemu-system-x86_64");
 
     qemu.arg("-serial").arg("stdio");
@@ -32,4 +31,3 @@ fn main() {
     let exit_status = qemu.status().expect("Failed to execute QEMU");
     process::exit(exit_status.code().unwrap_or(-1));
 }
-
