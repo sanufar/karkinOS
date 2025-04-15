@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use bootloader_api::info::{FrameBuffer, PixelFormat};
 use embedded_graphics::{
     Pixel,
