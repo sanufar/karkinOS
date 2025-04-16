@@ -59,7 +59,7 @@ impl<const MAX: usize> GlobalDescriptorTable<MAX> {
     }
 
     pub fn load(&'static self) {
-        let pointer = GdtPointer {
+        let pointer = GDTPointer {
             limit: (size_of::<Self>() - 1) as u16,
             // Calculate base: address of the GDT structure
             base: self as *const _ as u64,
@@ -72,17 +72,21 @@ impl<const MAX: usize> GlobalDescriptorTable<MAX> {
 }
 
 #[repr(C, packed)]
-struct GdtPointer {
+struct GDTPointer {
     limit: u16, // Size of the GDT minus 1
     base: u64,  // Linear address of the GDT
 }
 
-#[repr(C, packed)]
-struct SegmentSelector(u16);
+#[repr(transparent)]
+pub struct SegmentSelector(u16);
 
 impl SegmentSelector {
-    fn new(index: u16, privilege: PrivilegeLevel) -> Self {
+    pub fn new(index: u16, privilege: PrivilegeLevel) -> Self {
         SegmentSelector((index << 3) | (privilege as u16))
+    }
+
+    pub fn value(&self) -> u16 {
+        self.0
     }
 }
 

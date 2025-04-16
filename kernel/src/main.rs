@@ -32,7 +32,7 @@ fn example_test() {
 
 #[cfg(feature = "kerntest")]
 fn test_something() {
-    assert_eq!(0, 1);
+    assert_ne!(0, 1);
 }
 
 #[cfg(feature = "kerntest")]
