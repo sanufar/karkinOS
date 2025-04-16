@@ -17,6 +17,9 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
     let raw_frame_buffer = frame_buffer_struct.buffer_mut();
     logger::init(raw_frame_buffer, frame_buffer_info);
 
+    tests::init_tests();
+    tests::run_all();  
+
     #[cfg(feature = "kerntest")]
     {
         init_tests();

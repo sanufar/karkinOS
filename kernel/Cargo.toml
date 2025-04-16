@@ -17,3 +17,4 @@ bootloader-x86_64-common = "0.11.3"
 conquer-once = { version = "0.4.0", default-features = false }
 log = { version = "0.4.17", default-features = false }
 embedded-graphics = "0.8.1"
+paste = "1"
