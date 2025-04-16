@@ -3,6 +3,7 @@
 
 use bootloader_api::BootInfo;
 use core::panic::PanicInfo;
+use core::arch::asm;
 
 use kernel::*;
 
@@ -22,8 +23,19 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
         tests::run_all_tests();
     }
 
+    interrupts::init();
+
+    int3();
+
     loop {}
 }
+
+pub fn int3() {
+    unsafe {
+        asm!("int3", options(nomem, nostack));
+    }
+}
+
 
 #[cfg(feature = "kerntest")]
 fn example_test() {

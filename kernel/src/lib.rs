@@ -6,3 +6,4 @@ pub mod gdt;
 pub mod idt;
 pub mod logger;
 pub mod tests;
+pub mod interrupts;

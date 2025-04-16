@@ -5,7 +5,7 @@ use core::marker::PhantomData;
 
 #[repr(C)]
 #[repr(align(16))]
-struct InterruptDescriptorTable {
+pub struct InterruptDescriptorTable {
     pub divide_error: IDTEntry<HandlerFunc>,
     pub debug_exception: IDTEntry<HandlerFunc>,
     pub nonmaskable_interrupt: IDTEntry<HandlerFunc>,
@@ -36,6 +36,39 @@ struct InterruptDescriptorTable {
 }
 
 impl InterruptDescriptorTable {
+
+    pub fn new() -> InterruptDescriptorTable {
+        InterruptDescriptorTable {
+            divide_error: IDTEntry::missing(),
+            debug_exception: IDTEntry::missing(),
+            nonmaskable_interrupt: IDTEntry::missing(),
+            breakpoint: IDTEntry::missing(),
+            overflow: IDTEntry::missing(),
+            bound_range_exceeded: IDTEntry::missing(),
+            invalid_opcode: IDTEntry::missing(),
+            device_not_available: IDTEntry::missing(),
+            double_fault: IDTEntry::missing(),
+            coprocessor_segment_overrun: IDTEntry::missing(),
+            invalid_tss: IDTEntry::missing(),
+            segment_not_present: IDTEntry::missing(),
+            stack_segment_fault: IDTEntry::missing(),
+            general_protection_fault: IDTEntry::missing(),
+            page_fault: IDTEntry::missing(),
+            intel_reserved: IDTEntry::missing(),
+            x87_float_error: IDTEntry::missing(),
+            alignment_check: IDTEntry::missing(),
+            machine_check: IDTEntry::missing(),
+            simd_float_exception: IDTEntry::missing(),
+            virtualization_exception:IDTEntry::missing(),
+            control_protection_exception: IDTEntry::missing(),
+            reserved_for_future: [IDTEntry::missing(); 8],
+            security_exception: IDTEntry::missing(),
+            reserved_2: IDTEntry::missing(),
+            interrupts: [IDTEntry::missing(); 256 - 32] 
+        }
+    }
+
+
     pub fn load(&'static self) {
         use core::arch::asm;
         use core::mem::size_of;
@@ -58,7 +91,8 @@ struct IDTPointer {
 }
 
 #[repr(C)]
-struct IDTEntry<F> {
+#[derive(Clone, Copy)]
+pub struct IDTEntry<F> {
     fn_pointer_low: u16,
     gdt_selector: u16,
     options: EntryOptions,
@@ -110,6 +144,7 @@ impl_set_handler_fn!(HandlerFunc);
 impl_set_handler_fn!(HandlerFuncWithErrorCode);
 
 #[repr(transparent)]
+#[derive(Clone, Copy)]
 struct EntryOptions(u16);
 
 impl EntryOptions {
