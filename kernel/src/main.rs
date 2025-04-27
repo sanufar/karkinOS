@@ -2,8 +2,8 @@
 #![no_main]
 
 use bootloader_api::BootInfo;
-use core::panic::PanicInfo;
 use core::arch::asm;
+use core::panic::PanicInfo;
 
 use kernel::*;
 
@@ -20,7 +20,7 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
     #[cfg(feature = "kerntest")]
     {
         tests::init_tests();
-        tests::run_all();  
+        tests::run_all();
     }
 
     interrupts::init();

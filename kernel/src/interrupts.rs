@@ -13,10 +13,6 @@ pub fn init() {
     IDT.load();
 }
 
-
-extern "x86-interrupt" fn breakpoint_handler(
-    stack_frame: InterruptStackFrame)
-{
+extern "x86-interrupt" fn breakpoint_handler(stack_frame: InterruptStackFrame) {
     log::info!("EXCEPTION: BREAKPOINT");
 }
-

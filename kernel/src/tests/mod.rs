@@ -1,9 +1,18 @@
-use crate::*;      
+use crate::*;
+
 pub mod math;
 
-use paste;
+collect_tests!(math);
+
+pub use self::_init_tests as init_tests;
+pub use self::_run_all as run_all;
+
+// ====================================================================//
+//                          IMPL HERE FOR NOW                          //
+// ====================================================================//
 
 use core::sync::atomic::{AtomicUsize, Ordering};
+use paste;
 
 #[derive(Copy, Clone)]
 pub struct TestEntry {
@@ -64,8 +73,3 @@ macro_rules! collect_tests {
         }
     };
 }
-
-collect_tests!(math);
-
-pub use self::_run_all as run_all;
-pub use self::_init_tests as init_tests;

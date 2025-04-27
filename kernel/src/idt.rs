@@ -36,7 +36,6 @@ pub struct InterruptDescriptorTable {
 }
 
 impl InterruptDescriptorTable {
-
     pub fn new() -> InterruptDescriptorTable {
         InterruptDescriptorTable {
             divide_error: IDTEntry::missing(),
@@ -59,15 +58,14 @@ impl InterruptDescriptorTable {
             alignment_check: IDTEntry::missing(),
             machine_check: IDTEntry::missing(),
             simd_float_exception: IDTEntry::missing(),
-            virtualization_exception:IDTEntry::missing(),
+            virtualization_exception: IDTEntry::missing(),
             control_protection_exception: IDTEntry::missing(),
             reserved_for_future: [IDTEntry::missing(); 8],
             security_exception: IDTEntry::missing(),
             reserved_2: IDTEntry::missing(),
-            interrupts: [IDTEntry::missing(); 256 - 32] 
+            interrupts: [IDTEntry::missing(); 256 - 32],
         }
     }
-
 
     pub fn load(&'static self) {
         use core::arch::asm;
